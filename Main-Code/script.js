@@ -1,6 +1,6 @@
 var timer = document.querySelector(".time");
 var startbutton = document.querySelector("#start");
-var mainsection = document.querySelector("section");
+var landingpage = document.querySelector(".landingpage");
 var q1page = document.querySelector(".q1page");
 
 var timeleft = 0;
@@ -21,4 +21,7 @@ function setTimer() {
 
 startbutton.addEventListener("click", function() {
     setTimer();
+    landingpage.style.display = "none";
 });
+
+
