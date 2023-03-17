@@ -7,16 +7,31 @@ var q3page = document.querySelector(".q3page");
 var q4page = document.querySelector(".q4page");
 var q5page = document.querySelector(".q5page");
 var resultspage = document.querySelector(".resultspage");
+var displayscore = document.querySelector(".score");
+var submitbutton = document.querySelector(".submitbutton");
 
-var timeleft = 0;
+var timeleft = 60;
 var score = 0;
 
-q1page.style.display = "none";
-q2page.style.display = "none";
-q3page.style.display = "none";
-q4page.style.display = "none";
-q5page.style.display = "none";
+function clearquestions() {
+    q1page.style.display = "none";
+    q2page.style.display = "none";
+    q3page.style.display = "none";
+    q4page.style.display = "none";
+    q5page.style.display = "none";
+}
+
+clearquestions();
 resultspage.style.display = "none";
+questionpages = [
+    q1page,
+    q2page,
+    q3page,
+    q4page,
+    q5page
+]
+
+
 
 function setTimer() {
     window.timeleft = 60;
@@ -26,6 +41,7 @@ function setTimer() {
 
         if (timeleft ===0) {
             clearInterval(timerInterval);
+            showresults();
         }
         
     },1000);
@@ -60,7 +76,7 @@ function question1() {
         });
 };
 
-//QUESTION2
+//QUESTION 2
 function question2() {
     var wrongans = document.querySelectorAll(".wrongans2");
     var correctans = document.querySelectorAll(".correctans2");
@@ -83,7 +99,7 @@ function question2() {
         });
 };
 
-//QUESTION3
+//QUESTION 3
 function question3() {
     var wrongans = document.querySelectorAll(".wrongans3");
     var correctans = document.querySelectorAll(".correctans3");
@@ -105,7 +121,7 @@ function question3() {
             });
         });
 };
-
+//QUESTION 4
 function question4() {
     var wrongans = document.querySelectorAll(".wrongans4");
     var correctans = document.querySelectorAll(".correctans4");
@@ -127,7 +143,7 @@ function question4() {
             });
         });
 };
-
+//QUESTION 5
 function question5() {
     var wrongans = document.querySelectorAll(".wrongans5");
     var correctans = document.querySelectorAll(".correctans5");
@@ -136,7 +152,7 @@ function question5() {
         function(element) {
             element.addEventListener("click", function() {
                 q5page.style.display = "none";
-                resultspage.style.display = "initial";
+                showresults();
                 
             });
         });
@@ -145,8 +161,18 @@ function question5() {
             element.addEventListener("click", function() {
                 q5page.style.display = "none";
                 score++;
-                resultspage.style.display = "initial";
+                showresults();
                 
             });
         });
+    
 };
+
+function showresults() {
+    clearquestions()
+    resultspage.style.display = "initial";
+    displayscore.textContent=score;
+    submitbutton.addEventListener("click", function() {
+        
+    })
+}
