@@ -11,6 +11,11 @@ var displayscore = document.querySelector(".score");
 var submitbutton = document.querySelector(".submitbutton");
 var highscorepage = document.querySelector(".highscorepage");
 var showhspage = document.querySelector(".showhighscores");
+var score1 = document.querySelector("#score1");
+var score2 = document.querySelector("#score2");
+var score3 = document.querySelector("#score3");
+var score4 = document.querySelector("#score4");
+var score5 = document.querySelector("#score5");
 
 var timeleft = 60;
 var score = 0;
@@ -34,7 +39,7 @@ questionpages = [
     q5page
 ]
 
-
+scores = [];
 
 function setTimer() {
     window.timeleft = 60;
@@ -173,9 +178,29 @@ function question5() {
 
 function showresults() {
     clearquestions()
+    timeleft=1;
     resultspage.style.display = "initial";
     displayscore.textContent=score;
-    submitbutton.addEventListener("click", function() {
+    submitbutton.addEventListener("click", function(event) {
+        event.preventDefault();
+        showhighscores();
+        var name = document.querySelector("#initials").value;
+        
+
+        if (name === "") {
+            alert("Please enter a name");
+        } else {
+            localStorage.setItem("name", name);
+            localStorage.setItem("score", score);
+
+        }
+        
+        newscore = [score, name];
+        scores.push(newscore);
+        //CURRENT ISSUE
+        console.log(JSON.stringify(scores));
+        score1.textContent = scores.values();
+        //
 
     })
 }
