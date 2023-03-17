@@ -9,6 +9,8 @@ var q5page = document.querySelector(".q5page");
 var resultspage = document.querySelector(".resultspage");
 var displayscore = document.querySelector(".score");
 var submitbutton = document.querySelector(".submitbutton");
+var highscorepage = document.querySelector(".highscorepage");
+var showhspage = document.querySelector(".showhighscores");
 
 var timeleft = 60;
 var score = 0;
@@ -23,6 +25,7 @@ function clearquestions() {
 
 clearquestions();
 resultspage.style.display = "none";
+highscorepage.style.display="none";
 questionpages = [
     q1page,
     q2page,
@@ -173,6 +176,16 @@ function showresults() {
     resultspage.style.display = "initial";
     displayscore.textContent=score;
     submitbutton.addEventListener("click", function() {
-        
+
     })
 }
+
+function showhighscores() {
+    highscorepage.style.display="initial";
+    landingpage.style.display="none"; 
+    
+}
+
+showhspage.addEventListener("click", function() {
+    showhighscores();
+});
