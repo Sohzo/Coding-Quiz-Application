@@ -185,22 +185,12 @@ function showresults() {
         event.preventDefault();
         showhighscores();
         var name = document.querySelector("#initials").value;
+        score1.innerHTML = score+name;
         
 
-        if (name === "") {
-            alert("Please enter a name");
-        } else {
-            localStorage.setItem("name", name);
-            localStorage.setItem("score", score);
-
-        }
         
-        newscore = [score, name];
-        scores.push(newscore);
-        //CURRENT ISSUE
-        console.log(JSON.stringify(scores));
-        score1.textContent = scores.values();
-        //
+
+
 
     })
 }
