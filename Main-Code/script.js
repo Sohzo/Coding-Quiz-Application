@@ -191,15 +191,13 @@ function showresults() {
     displayscore.textContent=score;
     submitbutton.addEventListener("click", function(event) {
         event.preventDefault();
-        showhighscores();
+        highscorepage.style.display="initial";
         var name = document.querySelector("#initials").value;
         var profile = name + "-" + score;
-        //localStorage.setItem("Score", score);
-        //localStorage.setItem("Name", name);
         var allprofiles = JSON.parse(localStorage.getItem("allprofiles") || "[]");
         allprofiles.push(profile);
         localStorage.setItem("allprofiles", JSON.stringify(allprofiles));
-        allprofiles.slice(1).slice(-5);
+        window.allprofiles = allprofiles.reverse();
         console.log(allprofiles);
         for (i in allprofiles) {
             scorelist[i].innerHTML = allprofiles[i];
@@ -214,10 +212,20 @@ function showresults() {
 }
 
 function showhighscores() {
+    landingpage.style.display="none";
     highscorepage.style.display="initial";
-    landingpage.style.display="none"; 
+    var name = document.querySelector("#initials").value;
+    var profile = "Quiz not taken this session";
+    var allprofiles = JSON.parse(localStorage.getItem("allprofiles") || "[]");
+    allprofiles.push(profile);
+    localStorage.setItem("allprofiles", JSON.stringify(allprofiles));
+    window.allprofiles = allprofiles.reverse();
+    console.log(allprofiles);
+    for (i in allprofiles) {
+        scorelist[i].innerHTML = allprofiles[i];
+    };
     
-}
+};
 
 showhspage.addEventListener("click", function() {
     showhighscores();
