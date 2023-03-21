@@ -39,7 +39,13 @@ questionpages = [
     q5page
 ]
 
-scores = [];
+scorelist = [
+    score1,
+    score2,
+    score3,
+    score4,
+    score5
+];
 
 function setTimer() {
     window.timeleft = 60;
@@ -160,7 +166,7 @@ function question5() {
         function(element) {
             element.addEventListener("click", function() {
                 q5page.style.display = "none";
-                showresults();
+                timeleft = 1;
                 
             });
         });
@@ -169,12 +175,14 @@ function question5() {
             element.addEventListener("click", function() {
                 q5page.style.display = "none";
                 score++;
-                showresults();
+                timeleft = 1;
                 
             });
         });
     
 };
+
+//scores = [];
 
 function showresults() {
     clearquestions()
@@ -185,8 +193,18 @@ function showresults() {
         event.preventDefault();
         showhighscores();
         var name = document.querySelector("#initials").value;
-        score1.innerHTML = score+name;
-        
+        var profile = name + "-" + score;
+        //localStorage.setItem("Score", score);
+        //localStorage.setItem("Name", name);
+        var allprofiles = JSON.parse(localStorage.getItem("allprofiles") || "[]");
+        allprofiles.push(profile);
+        localStorage.setItem("allprofiles", JSON.stringify(allprofiles));
+        allprofiles.slice(1).slice(-5);
+        console.log(allprofiles);
+        for (i in allprofiles) {
+            scorelist[i].innerHTML = allprofiles[i];
+        };
+
 
         
 
