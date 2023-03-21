@@ -24,3 +24,4 @@ The following image shows the page the user lands on after clicking "View Scores
 
 # Link to Application
 
+https://sohzo.github.io/Coding-Quiz-Application/
