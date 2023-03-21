@@ -1,3 +1,5 @@
+//Create necessary variables
+
 var timer = document.querySelector(".time");
 var startbutton = document.querySelector("#start");
 var landingpage = document.querySelector(".landingpage");
@@ -19,6 +21,8 @@ var score5 = document.querySelector("#score5");
 
 var timeleft = 60;
 var score = 0;
+
+//Created necessary arrays
 
 function clearquestions() {
     q1page.style.display = "none";
@@ -47,6 +51,8 @@ scorelist = [
     score5
 ];
 
+//Sets timer for application on start
+
 function setTimer() {
     window.timeleft = 60;
     var timerInterval = setInterval(function() {
@@ -61,6 +67,8 @@ function setTimer() {
     },1000);
     
 };
+
+//Begins quiz when button is pressed
 
 startbutton.addEventListener("click", function() {
     setTimer();
@@ -182,7 +190,7 @@ function question5() {
     
 };
 
-//scores = [];
+//Allows user to input score to store, as well as displays past 5 scores
 
 function showresults() {
     clearquestions()
@@ -211,6 +219,8 @@ function showresults() {
     })
 }
 
+//Displays past 5 scores
+
 function showhighscores() {
     landingpage.style.display="none";
     highscorepage.style.display="initial";
@@ -226,6 +236,8 @@ function showhighscores() {
     };
     
 };
+
+//Button that displays previous function
 
 showhspage.addEventListener("click", function() {
     showhighscores();
